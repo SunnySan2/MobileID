@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "910912356385",
+    "firebase_url": "https://mobileid-sc-taisys.firebaseio.com",
+    "project_id": "mobileid-sc-taisys",
+    "storage_bucket": "mobileid-sc-taisys.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:910912356385:android:d3a0e6f7175cbea0",
+        "android_client_info": {
+          "package_name": "com.taisys.sc.mobileid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "910912356385-4qtestnoab136mio27q9ee4schgmafi5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.taisys.sc.mobileid",
+            "certificate_hash": "816ad4e87bf0b60c47f6b029111d52b8a43f0794"
+          }
+        },
+        {
+          "client_id": "910912356385-a56443u60jotj4jddb1erghjaib8277i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYrphuc_DG3laKNFILQk5Lpnc6JWruOK4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "910912356385-a56443u60jotj4jddb1erghjaib8277i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
