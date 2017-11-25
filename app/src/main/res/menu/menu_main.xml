@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+
+    <item
+        android:id="@+id/set_phone_number"
+        android:icon="@android:drawable/ic_menu_call"
+        android:title="Set Phone Number"
+        android:showAsAction="always"
+        android:onClick="clickMenuItem"
+        />
+
+    <item
+        android:id="@+id/edit_settings"
+        android:icon="@android:drawable/ic_menu_edit"
+        android:title="Edit Settings"
+        android:showAsAction="always"
+        android:onClick="clickMenuItem"
+        />
+
+</menu>

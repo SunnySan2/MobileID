@@ -1,5 +1,7 @@
 package com.taisys.sc.mobileid;
 
+import android.content.ComponentName;
+import android.content.Intent;
 import android.util.Log;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
@@ -25,5 +27,14 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         }else{
             Log.d("FCM", "No Message data");
         }
+
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_LAUNCHER);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        ComponentName cn = new ComponentName(this, MainActivity.class);
+        intent.setComponent(cn);
+        startActivity(intent);
+
     }
 }
