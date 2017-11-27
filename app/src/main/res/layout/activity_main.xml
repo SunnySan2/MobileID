@@ -1,17 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingBottom="5dp"
+    android:background="@drawable/background_radius"
     tools:context="com.taisys.sc.mobileid.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
-</RelativeLayout>
+    <com.synnapps.carouselview.CarouselView
+        android:id="@+id/carouselView"
+        android:scaleType="matrix"
+        android:layout_width="match_parent"
+        android:layout_height="108dp"
+        app:fillColor="#FFFFFFFF"
+        app:pageColor="#00000000"
+        app:animateOnBoundary="false"
+        app:radius="6dp"
+        app:slideInterval="5000"
+        app:pageTransformInterval="2000"
+        app:strokeColor="#FF777777"
+        app:strokeWidth="1dp"/>
+
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="fill_parent" android:layout_height="fill_parent" android:paddingLeft="5dp" android:paddingRight="5dp">
+        <TableRow android:layout_marginTop="5dp" android:layout_width="wrap_content" android:layout_height="0dp" android:layout_weight="1">
+            <Button android:id="@+id/iconRegistration"
+                android:drawableTop="@drawable/menu_registration"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="1">
+            </Button>
+
+            <Button android:id="@+id/iconMyCertificate"
+                android:drawableTop="@drawable/menu_registration"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="1">
+            </Button>
+
+        </TableRow>
+        <TableRow android:layout_marginTop="5dp" android:layout_width="wrap_content" android:layout_height="0dp" android:layout_weight="1">
+            <Button android:id="@+id/iconReport"
+                android:drawableTop="@drawable/menu_report"
+                android:text="@string/menuRegistration"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="1">
+            </Button>
+
+            <Button android:id="@+id/iconRegistration3"
+                android:drawableTop="@drawable/menu_registration"
+                android:text="@string/menuRegistration"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="1">
+            </Button>
+
+        </TableRow>
+    </TableLayout>
+
+
+</LinearLayout>

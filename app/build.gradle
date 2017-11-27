@@ -27,6 +27,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.google.firebase:firebase-core:11.6.0'
     compile 'com.google.firebase:firebase-messaging:11.6.0'
+    compile 'com.synnapps:carouselview:0.1.4'
 }
 
 apply plugin: 'com.android.application'

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MobileID</string>
+    <string name="menuRegistration">Registration</string>
 </resources>
