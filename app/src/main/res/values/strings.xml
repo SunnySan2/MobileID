@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">MobileID</string>
+    <string name="menuAbout">About</string>
+    <string name="msgSystemInfo">System Information</string>
+    <string name="aboutTaisys">Powered by Taisys Holding Co. Ltd. \nAll rights reserved.</string>
     <string name="menuRegistration">Certificate Registration</string>
     <string name="menuMyCertificate">My Certificate</string>
     <string name="menuReport">Authentication History</string>

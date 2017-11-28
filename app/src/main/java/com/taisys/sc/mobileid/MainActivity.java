@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -20,15 +21,15 @@ public class MainActivity extends Activity {
 
     //CarouselView圖片輪播，參考 https://github.com/sayyam/carouselview
     CarouselView carouselView;
-    //int[] sampleImages = {R.drawable.banner_tw_01, R.drawable.banner_tw_02, R.drawable.banner_tw_03, R.drawable.banner_tw_04, R.drawable.banner_tw_05, R.drawable.banner_tw_06, R.drawable.banner_tw_07, R.drawable.banner_tw_08, R.drawable.banner_tw_09, R.drawable.banner_tw_10, R.drawable.banner_tw_11};
-    int[] sampleImages = {R.drawable.banner_tw_12, R.drawable.banner_tw_13, R.drawable.banner_tw_14, R.drawable.banner_tw_15};
+    //int[] bannerImages = {R.drawable.banner_tw_01, R.drawable.banner_tw_02, R.drawable.banner_tw_03, R.drawable.banner_tw_04, R.drawable.banner_tw_05, R.drawable.banner_tw_06, R.drawable.banner_tw_07, R.drawable.banner_tw_08, R.drawable.banner_tw_09, R.drawable.banner_tw_10, R.drawable.banner_tw_11};
+    //int[] bannerImages = {R.drawable.banner_tw_12, R.drawable.banner_tw_13, R.drawable.banner_tw_14, R.drawable.banner_tw_15};
+    int[] bannerImages = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        setCarouselView();
         setMenuIcon();
         /*
                 Intent intent = getIntent();
@@ -59,25 +60,21 @@ public class MainActivity extends Activity {
 
         // 判斷該執行什麼工作，目前還沒有加入需要執行的工作
         switch (itemId) {
-            case R.id.set_phone_number:
-                break;
-            case R.id.edit_settings:
+            case R.id.about_taisys:
+                AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
+                dialog.setTitle(R.string.msgSystemInfo)
+                        .setMessage(R.string.aboutTaisys)
+                        .setIcon(R.drawable.info)
+                        .show();
                 break;
         }
 
-        // 測試用的程式碼，完成測試後記得移除
-        AlertDialog.Builder dialog =
-                new AlertDialog.Builder(MainActivity.this);
-        dialog.setTitle("MenuItem Test")
-                .setMessage(item.getTitle())
-                .setIcon(item.getIcon())
-                .show();
     }
 
     //設定輪播 banner
     private void setCarouselView(){
         carouselView = (CarouselView) findViewById(R.id.carouselView);
-        carouselView.setPageCount(sampleImages.length);
+        carouselView.setPageCount(bannerImages.length);
         carouselView.setImageListener(imageListener);
         ViewGroup.LayoutParams para = carouselView.getLayoutParams();
         // 取得螢幕解析度
@@ -106,7 +103,7 @@ public class MainActivity extends Activity {
     ImageListener imageListener = new ImageListener() {
         @Override
         public void setImageForPosition(int position, ImageView imageView) {
-            imageView.setImageResource(sampleImages[position]);
+            imageView.setImageResource(bannerImages[position]);
         }
     };
 
@@ -121,6 +118,8 @@ public class MainActivity extends Activity {
         }
         Log.d("FCM", "sCountry=" + sCountry);
         if (sCountry.equals("TW")){    //繁體中文，台灣
+            bannerImages = new int[] {R.drawable.banner_tw_01, R.drawable.banner_tw_02, R.drawable.banner_tw_03};
+
             btn = (ImageButton) findViewById(R.id.iconRegistration);
             btn.setBackgroundResource(R.drawable.menu_registration_tw);
             btn = (ImageButton) findViewById(R.id.iconMyCertificate);
@@ -130,6 +129,7 @@ public class MainActivity extends Activity {
             btn = (ImageButton) findViewById(R.id.iconChangePinCode);
             btn.setBackgroundResource(R.drawable.menu_pin_tw);
         }else{
+            bannerImages = new int[] {R.drawable.banner_tw_01, R.drawable.banner_tw_02, R.drawable.banner_tw_03, R.drawable.banner_tw_12, R.drawable.banner_tw_13};
             btn = (ImageButton) findViewById(R.id.iconRegistration);
             btn.setBackgroundResource(R.drawable.menu_registration_us);
             btn = (ImageButton) findViewById(R.id.iconMyCertificate);
@@ -139,5 +139,6 @@ public class MainActivity extends Activity {
             btn = (ImageButton) findViewById(R.id.iconChangePinCode);
             btn.setBackgroundResource(R.drawable.menu_pin_us);
         }
+        setCarouselView();
     }
 }

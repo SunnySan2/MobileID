@@ -6,9 +6,9 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:paddingBottom="5dp"
     android:background="@drawable/background_radius"
     tools:context="com.taisys.sc.mobileid.MainActivity">
+    <!--android:paddingBottom="5dp"-->
 
     <com.synnapps.carouselview.CarouselView
         android:id="@+id/carouselView"
@@ -24,8 +24,9 @@
         app:strokeColor="#FF777777"
         app:strokeWidth="1dp"/>
 
-    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="fill_parent" android:layout_height="fill_parent" android:paddingLeft="5dp" android:paddingRight="5dp">
-        <TableRow android:layout_marginTop="5dp" android:layout_width="wrap_content" android:layout_height="0dp" android:layout_weight="1">
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <!--<TableRow android:layout_marginTop="5dp" android:layout_width="wrap_content" android:layout_height="0dp" android:layout_weight="1">-->
+        <TableRow android:layout_width="wrap_content" android:layout_height="0dp" android:layout_weight="1">
             <ImageButton android:id="@+id/iconRegistration"
                 android:background="@drawable/menu_registration_us"
                 android:layout_width="0dip"
@@ -37,12 +38,11 @@
                 android:background="@drawable/menu_certificate_us"
                 android:layout_width="0dip"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginLeft="5dp">
+                android:layout_weight="1">
             </ImageButton>
 
         </TableRow>
-        <TableRow android:layout_marginTop="5dp" android:layout_width="wrap_content" android:layout_height="0dp" android:layout_weight="1">
+        <TableRow android:layout_width="wrap_content" android:layout_height="0dp" android:layout_weight="1">
             <ImageButton android:id="@+id/iconReport"
                 android:background="@drawable/menu_report_us"
                 android:layout_width="0dip"
@@ -54,8 +54,7 @@
                 android:background="@drawable/menu_pin_us"
                 android:layout_width="0dip"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginLeft="5dp">
+                android:layout_weight="1">
             </ImageButton>
 
         </TableRow>
