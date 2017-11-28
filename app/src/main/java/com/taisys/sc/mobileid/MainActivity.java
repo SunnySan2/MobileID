@@ -2,6 +2,7 @@ package com.taisys.sc.mobileid;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -9,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.synnapps.carouselview.CarouselView;
@@ -27,7 +29,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         setCarouselView();
-
+        setMenuIcon();
         /*
                 Intent intent = getIntent();
                 String msg = intent.getStringExtra("msg");
@@ -95,7 +97,7 @@ public class MainActivity extends Activity {
         i=(i-para.height-32)/2;
         Log.d("FCM", "i=" + String.valueOf(i));
         //para.height = i;
-        Button btn = (Button) findViewById(R.id.iconRegistration);
+        //Button btn = (Button) findViewById(R.id.iconRegistration);
         //btn.setHeight(i);
         //btn.setLayoutParams(para);
     }   //private void setCarouselView(){
@@ -108,4 +110,34 @@ public class MainActivity extends Activity {
         }
     };
 
+    private void setMenuIcon(){
+        ImageButton btn = null;
+        String sCountry = "";
+        int  sysVersion = Build.VERSION.SDK_INT;
+        if (sysVersion>23){
+            sCountry = getResources().getConfiguration().getLocales().get(0).getCountry();
+        }else{
+            sCountry = getResources().getConfiguration().locale.getCountry();
+        }
+        Log.d("FCM", "sCountry=" + sCountry);
+        if (sCountry.equals("TW")){    //繁體中文，台灣
+            btn = (ImageButton) findViewById(R.id.iconRegistration);
+            btn.setBackgroundResource(R.drawable.menu_registration_tw);
+            btn = (ImageButton) findViewById(R.id.iconMyCertificate);
+            btn.setBackgroundResource(R.drawable.menu_certificate_tw);
+            btn = (ImageButton) findViewById(R.id.iconReport);
+            btn.setBackgroundResource(R.drawable.menu_report_tw);
+            btn = (ImageButton) findViewById(R.id.iconChangePinCode);
+            btn.setBackgroundResource(R.drawable.menu_pin_tw);
+        }else{
+            btn = (ImageButton) findViewById(R.id.iconRegistration);
+            btn.setBackgroundResource(R.drawable.menu_registration_us);
+            btn = (ImageButton) findViewById(R.id.iconMyCertificate);
+            btn.setBackgroundResource(R.drawable.menu_certificate_us);
+            btn = (ImageButton) findViewById(R.id.iconReport);
+            btn.setBackgroundResource(R.drawable.menu_report_us);
+            btn = (ImageButton) findViewById(R.id.iconChangePinCode);
+            btn.setBackgroundResource(R.drawable.menu_pin_us);
+        }
+    }
 }

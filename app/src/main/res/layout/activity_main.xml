@@ -26,37 +26,37 @@
 
     <TableLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="fill_parent" android:layout_height="fill_parent" android:paddingLeft="5dp" android:paddingRight="5dp">
         <TableRow android:layout_marginTop="5dp" android:layout_width="wrap_content" android:layout_height="0dp" android:layout_weight="1">
-            <Button android:id="@+id/iconRegistration"
-                android:drawableTop="@drawable/menu_registration"
+            <ImageButton android:id="@+id/iconRegistration"
+                android:background="@drawable/menu_registration_us"
                 android:layout_width="0dip"
-                android:layout_height="fill_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1">
-            </Button>
+            </ImageButton>
 
-            <Button android:id="@+id/iconMyCertificate"
-                android:drawableTop="@drawable/menu_registration"
+            <ImageButton android:id="@+id/iconMyCertificate"
+                android:background="@drawable/menu_certificate_us"
                 android:layout_width="0dip"
-                android:layout_height="fill_parent"
-                android:layout_weight="1">
-            </Button>
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="5dp">
+            </ImageButton>
 
         </TableRow>
         <TableRow android:layout_marginTop="5dp" android:layout_width="wrap_content" android:layout_height="0dp" android:layout_weight="1">
-            <Button android:id="@+id/iconReport"
-                android:drawableTop="@drawable/menu_report"
-                android:text="@string/menuRegistration"
+            <ImageButton android:id="@+id/iconReport"
+                android:background="@drawable/menu_report_us"
                 android:layout_width="0dip"
-                android:layout_height="fill_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1">
-            </Button>
+            </ImageButton>
 
-            <Button android:id="@+id/iconRegistration3"
-                android:drawableTop="@drawable/menu_registration"
-                android:text="@string/menuRegistration"
+            <ImageButton android:id="@+id/iconChangePinCode"
+                android:background="@drawable/menu_pin_us"
                 android:layout_width="0dip"
-                android:layout_height="fill_parent"
-                android:layout_weight="1">
-            </Button>
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="5dp">
+            </ImageButton>
 
         </TableRow>
     </TableLayout>

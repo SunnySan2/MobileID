@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">行動自然人憑證</string>
+    <string name="menuRegistration">註冊我的憑證</string>
+    <string name="menuMyCertificate">我的憑證資料</string>
+    <string name="menuReport">身分認證記錄</string>
+    <string name="menuChangePin">修改PIN碼</string>
 </resources>

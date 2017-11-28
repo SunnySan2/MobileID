@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">MobileID</string>
-    <string name="menuRegistration">Registration</string>
+    <string name="menuRegistration">Certificate Registration</string>
+    <string name="menuMyCertificate">My Certificate</string>
+    <string name="menuReport">Authentication History</string>
+    <string name="menuChangePin">Change PIN Code</string>
 </resources>
