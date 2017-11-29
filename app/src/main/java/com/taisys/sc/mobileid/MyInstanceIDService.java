@@ -13,6 +13,8 @@ public class MyInstanceIDService extends FirebaseInstanceIdService {
     @Override
     public void onTokenRefresh() {
         String token = FirebaseInstanceId.getInstance().getToken();
-        Log.d("FCM", "Token:" + token);
+        utility.setMySetting(this, "fcmToken", token);
+        utility.setMySetting(this, "fcmTokenChanged", "Y");
+        Log.d("FCM", "Token: " + token);
     }
 }

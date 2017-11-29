@@ -7,4 +7,12 @@
     <string name="menuMyCertificate">My Certificate</string>
     <string name="menuReport">Authentication History</string>
     <string name="menuChangePin">Change PIN Code</string>
+    <string name="labelEnterIdCardNumber">Please enter your ID card number (*)</string>
+    <string name="labelEnterPinCode">Please enter PIN code of Mobile ID (*)</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="pleaseWait">Please wait...</string>
+    <string name="msgReadCardInfo">Read card information</string>
+    <string name="msgDoesntSupportOti">Unable to communicate with card, please ensure you have inserted the card.</string>
+    <string name="msgCannotReadCardInfo">Unable to get card information, please ensure you have inserted the correct card.</string>
 </resources>

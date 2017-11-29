@@ -2,12 +2,14 @@ package com.taisys.sc.mobileid;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
@@ -44,6 +46,7 @@ public class MainActivity extends Activity {
         }
         //Toast.makeText(this, msisdn, Toast.LENGTH_SHORT).show();
         //utility.setMySetting(this, "msisdn", "123");
+        setOnClickListener();
     }
 
     // 加入載入選單資源的方法
@@ -140,5 +143,17 @@ public class MainActivity extends Activity {
             btn.setBackgroundResource(R.drawable.menu_pin_us);
         }
         setCarouselView();
+    }
+
+    private void setOnClickListener(){
+        ImageButton b1 = (ImageButton) findViewById(R.id.iconRegistration);
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent();
+                i.setClass(MainActivity.this, RegistrationActivity.class);
+                startActivity(i);
+            }
+        });
     }
 }
