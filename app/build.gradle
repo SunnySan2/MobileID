@@ -5,11 +5,12 @@ android {
     buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "com.taisys.sc.mobileid"
-        minSdkVersion 16
+        minSdkVersion 14
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -30,6 +31,7 @@ dependencies {
     compile 'com.google.firebase:firebase-core:11.6.0'
     compile 'com.google.firebase:firebase-messaging:11.6.0'
     compile 'com.synnapps:carouselview:0.1.4'
+    compile 'com.squareup.okhttp3:okhttp:3.9.1'
     compile files('libs/com.taisys.oti.card.v1.1.5.jar')
     compile files('libs/android-support-v4.jar')
 }

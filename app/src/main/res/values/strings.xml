@@ -12,7 +12,19 @@
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
     <string name="pleaseWait">Please wait...</string>
+    <string name="msgRegistrationInProgress">Registration in progress.</string>
+    <string name="msgCheckCardAvailability">Check card availability</string>
     <string name="msgReadCardInfo">Read card information</string>
     <string name="msgDoesntSupportOti">Unable to communicate with card, please ensure you have inserted the card.</string>
     <string name="msgCannotReadCardInfo">Unable to get card information, please ensure you have inserted the correct card.</string>
+    <string name="msgPleaseEnterPinCode">Please enter PIN code.</string>
+    <string name="msgVerifyPinCode">Verify PIN code.</string>
+    <string name="msgPinCodeIsIncorrect">The PIN code is incorrect, please enter valid PIN code.</string>
+    <string name="msgPleaseEnterIdCardNumber">Please enter your ID card number</string>
+    <string name="msgCannotFindFcmToken">Unable to find push notification token, please re-install the APP and try again.</string>
+    <string name="msgSendRegistrationRequest">Genarate digital signature and process registration data.</string>
+    <string name="msgFailToCommunicateWithServer">Fail to communicate with server.</string>
+    <string name="msgUnableToParseServerResponseData">Unable to parse response data sent from server.</string>
+    <string name="msgProcessFailed">Process failed.</string>
+    <string name="msgProcessSucceeded">The job is successfully processed.</string>
 </resources>

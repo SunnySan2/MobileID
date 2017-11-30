@@ -4,17 +4,26 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.EditText;
 
 import com.taisys.oti.Card;
 import com.taisys.oti.Card.SCSupported;
 
-import static java.lang.Thread.sleep;
+import org.json.JSONObject;
+
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
 
 public class RegistrationActivity extends Activity {
     private Card mCard = new Card();
@@ -42,21 +51,35 @@ public class RegistrationActivity extends Activity {
         super.onDestroy();
     }
 
-    private void showWaiting(String msg) {
-        // if(pg == null) {
-        pg = new ProgressDialog(this);
-        // }
-        pg.setIndeterminate(true);
-        pg.setCancelable(false);
-        pg.setCanceledOnTouchOutside(false);
-        pg.setMessage(msg);
-        pg.show();
+    private void showWaiting(final String title, final String msg) {
+        disWaiting();
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                pg = new ProgressDialog(myContext);
+                // }
+                pg.setIndeterminate(true);
+                pg.setCancelable(false);
+                pg.setCanceledOnTouchOutside(false);
+                pg.setTitle(title);
+                pg.setMessage(msg);
+                pg.show();
+            }
+        });
     }
 
     private void disWaiting() {
-        if (pg != null && pg.isShowing()) {
-            pg.dismiss();
-        }
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (pg != null && pg.isShowing()) {
+                    pg.dismiss();
+                }
+            }
+        });
+
+
+
     }
 
     @Override
@@ -65,11 +88,15 @@ public class RegistrationActivity extends Activity {
     }
 
     private void getCardInfo(){
+        //顯示Progress對話視窗
+        //utility.showToast(myContext, getString(R.string.msgReadCardInfo));
+        //showWaiting(getString(R.string.pleaseWait), getString(R.string.msgReadCardInfo));
         String res[] = mCard.GetCardInfo();
         String iccid = "";
         String s = "";
         int i = 0;
         int j = 0;
+        //disWaiting();
         if (res != null && res[0].equals(Card.RES_OK)) {
             /*
                             res[1] 的結構如下：
@@ -90,7 +117,8 @@ public class RegistrationActivity extends Activity {
             //utility.showMessage(myContext, String.valueOf(i));
             utility.setMySetting(myContext, "iccid", iccid);
             //utility.showToast(this, "CardInfor: " + res[1]);
-            utility.showToast(this, "ICCID= " + iccid);
+            //utility.showToast(this, "ICCID= " + iccid);
+            verifyPinCode();
         } else {
             utility.showMessage(myContext, getString(R.string.msgCannotReadCardInfo));
         }
@@ -102,35 +130,23 @@ public class RegistrationActivity extends Activity {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //顯示Progress對話視窗
-                pg = ProgressDialog.show(myContext, getString(R.string.pleaseWait), getString(R.string.msgReadCardInfo), true);
-                RegistrationActivity.this.runOnUiThread(new Runnable() {
-                    public void run(){
-                        try{
-                            mCard.OpenSEService(myContext, "A000000018506373697A672D63617264",
-                                    new SCSupported() {
+        //顯示Progress對話視窗
+        // showWaiting(getString(R.string.pleaseWait), getString(R.string.msgCheckCardAvailability));
+        showWaiting(getString(R.string.pleaseWait), getString(R.string.msgRegistrationInProgress));
+        mCard.OpenSEService(myContext, "A000000018506373697A672D63617264",
+                new SCSupported() {
 
-                                        @Override
-                                        public void isSupported(boolean success) {
-                                            //disWaiting();
-                                            if (success) {
-                                                //showToast("该手机支持OTI！");
-                                                getCardInfo();
-                                            } else {
-                                                utility.showMessage(myContext, getString(R.string.msgDoesntSupportOti));
-                                            }
-                                        }
-                                    });
-                        }
-                        catch(Exception e){
-                            e.printStackTrace();
-                        }
-                        finally{
-                            pg.dismiss();
+                    @Override
+                    public void isSupported(boolean success) {
+                        if (success) {
+                            //手機支援OTI
+                            getCardInfo();
+                        } else {
+                            disWaiting();
+                            utility.showMessage(myContext, getString(R.string.msgDoesntSupportOti));
                         }
                     }
                 });
-
             }
         });
 
@@ -143,5 +159,119 @@ public class RegistrationActivity extends Activity {
         });
     }
 
+    private void verifyPinCode(){
+        EditText editTextPinCode = (EditText) findViewById(R.id.editTextRegistrationPinCode);
+        String pinCode = editTextPinCode.getText().toString();
+        if (pinCode.length()==0){
+            disWaiting();
+            utility.showMessage(myContext,getString(R.string.msgPleaseEnterPinCode));
+            return;
+        }
+        //utility.showToast(myContext, getString(R.string.msgVerifyPinCode));
+        //showWaiting(getString(R.string.pleaseWait), getString(R.string.msgVerifyPinCode));
+        int pinId = 0x1;
+        pinCode = utility.byte2Hex(pinCode.getBytes());
+        String res = mCard.VerifyPIN(pinId, pinCode);
+        if (mCard!=null){
+            mCard.CloseSEService();
+        }
+        if (res != null && res.equals(Card.RES_OK)) {
+            Log.d("MobileId", "PIN verification passed");
+            sendRegistrationRequestToServer();
+        } else {
+            disWaiting();
+            Log.d("MobileId", "PIN code compared failed, user enter PIN= " + pinCode);
+            utility.showMessage(myContext, getString(R.string.msgPinCodeIsIncorrect));
+        }
+    }
 
+    private void sendRegistrationRequestToServer(){
+        EditText editTextIdCardNumber = (EditText) findViewById(R.id.editTextRegistationIdCardNumber);
+        String idCardNumber = editTextIdCardNumber.getText().toString();
+        if (idCardNumber==null || idCardNumber.length()==0){
+            disWaiting();
+            utility.showMessage(myContext,getString(R.string.msgPleaseEnterIdCardNumber));
+            return;
+        }
+
+        String iccid = utility.getMySetting(myContext, "iccid");
+        if (iccid==null || iccid.length()==0){
+            disWaiting();
+            utility.showMessage(myContext,getString(R.string.msgCannotReadCardInfo));
+            return;
+        }
+
+        String fcmToken = utility.getMySetting(myContext, "fcmToken");
+        if (fcmToken==null || fcmToken.length()==0){
+            disWaiting();
+            utility.showMessage(myContext,getString(R.string.msgCannotFindFcmToken));
+            return;
+        }
+
+        //資料都有了，將資料送給 server
+        //showWaiting(getString(R.string.pleaseWait), getString(R.string.msgSendRegistrationRequest));
+
+        try {
+            OkHttpClient client = new OkHttpClient();
+            // 設定key - value 參數
+            FormBody params = new FormBody.Builder()
+                    .add("idCardNumber", idCardNumber)
+                    .add("iccid", iccid)
+                    .add("fcmToken", fcmToken)
+                    .build();
+
+            // 建立請求物件，設定網址
+            String url = "http://cms.gslssd.com/MobileIdServer/ajaxDoCardRegistration.jsp";
+            Request request = new Request.Builder().post(params).url(url).build();
+            client.newCall(request).enqueue(new Callback() {
+                @Override
+                public void onFailure(@NonNull Call call, @NonNull final IOException e) {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            disWaiting();
+                            utility.showMessage(myContext, getString(R.string.msgFailToCommunicateWithServer) + ":\n" + e.toString());
+                            Log.e("MobileIdRegistration", e.toString());
+                        }
+                    });
+                }
+
+                @Override
+                public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                    if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+                    ResponseBody responseBody = response.body();
+                    final String sResponse = response.body().string();
+                    Log.d("MobileId", sResponse);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            disWaiting();
+                            try{
+                                JSONObject jResponse = new JSONObject(sResponse);
+                                String sResultCode = jResponse.getString("resultCode");
+                                String sResultText = jResponse.getString("resultText");
+                                if (sResultCode==null || sResultCode.length()<1 || !sResultCode.equals("00000")){
+                                    if (sResultText==null || sResultText.length()<1){
+                                        utility.showMessage(myContext, getString(R.string.msgProcessFailed));
+                                    }else{
+                                        utility.showMessage(myContext, sResultText);
+                                    }
+                                }else{
+                                    utility.showToast(myContext, getString(R.string.msgProcessSucceeded));
+                                    finish();
+                                }
+                            }catch (Exception e){
+                                utility.showMessage(myContext, getString(R.string.msgUnableToParseServerResponseData));
+                            }
+
+                        }
+                    });
+                }
+            });
+        }catch (Exception e){
+            disWaiting();
+            utility.showMessage(myContext, getString(R.string.msgFailToCommunicateWithServer));
+            Log.e("MobileIdRegistration", e.toString());
+        }
+    }
 }
