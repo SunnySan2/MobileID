@@ -7,6 +7,7 @@
     <string name="menuMyCertificate">My Certificate</string>
     <string name="menuReport">Authentication History</string>
     <string name="menuChangePin">Change PIN Code</string>
+    <string name="menuAuthentication">Service Authentication</string>
     <string name="labelEnterIdCardNumber">Please enter your ID card number (*)</string>
     <string name="labelEnterPinCode">Please enter PIN code of Mobile ID (*)</string>
     <string name="ok">OK</string>
@@ -27,4 +28,10 @@
     <string name="msgUnableToParseServerResponseData">Unable to parse response data sent from server.</string>
     <string name="msgProcessFailed">Process failed.</string>
     <string name="msgProcessSucceeded">The job is successfully processed.</string>
+    <string name="labelCompanyName">Company name: </string>
+    <string name="labelServiceName">Service name: </string>
+    <string name="labelAutheticationMessageContent">Message: </string>
+    <string name="msgUnableToGetIccid">Unable to obtain card information, please regiter your certificate.</string>
+    <string name="msgUnableToGetIdCardNumber">Unable to obtain ID card number, please regiter your certificate.</string>
+    <string name="msgCreatingSignature">Creating signature in progress.</string>
 </resources>

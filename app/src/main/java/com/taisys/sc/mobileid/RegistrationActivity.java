@@ -77,9 +77,6 @@ public class RegistrationActivity extends Activity {
                 }
             }
         });
-
-
-
     }
 
     @Override
@@ -207,6 +204,8 @@ public class RegistrationActivity extends Activity {
             utility.showMessage(myContext,getString(R.string.msgCannotFindFcmToken));
             return;
         }
+
+        utility.setMySetting(myContext, "idCardNumber", idCardNumber);
 
         //資料都有了，將資料送給 server
         //showWaiting(getString(R.string.pleaseWait), getString(R.string.msgSendRegistrationRequest));
