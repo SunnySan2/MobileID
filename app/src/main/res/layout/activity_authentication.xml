@@ -11,72 +11,82 @@
     tools:context="com.taisys.sc.mobileid.AuthenticationActivity"
     android:background="#EEEEEE"
     android:orientation="vertical">
-
-    <TextView
-        android:text="@string/menuAuthentication"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:id="@+id/textAuthenticationTitle"
-        android:textAlignment="center"
-        android:textSize="24sp"/>
-
-    <TextView
-        android:text=""
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:id="@+id/labelAuthenticationCompanyName" />
-
-    <TextView
-        android:text=""
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:id="@+id/labelAuthenticationServiceName" />
-
-    <TextView
-        android:text=""
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:id="@+id/labelAuthenticationMessageContent" />
-
-    <TextView
-        android:text="@string/labelEnterPinCode"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:id="@+id/labelAuthenticationEnterPinCode" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="12"
-        android:layout_marginTop="10dp"
-        android:id="@+id/editTextAuthenticationPinCode"
-        android:text="111111"
-        android:inputType="textPassword" />
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="50dp">
-
-        <Button
-            android:text="@android:string/ok"
-            android:layout_width="wrap_content"
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/buttonAuthenticationConfirm"
-            android:layout_weight="0.37" />
+            android:orientation="vertical">
 
-        <Button
-            android:text="@android:string/cancel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/buttonAuthenticationCancel"
-            android:layout_weight="0.37" />
-    </LinearLayout>
+            <TextView
+                android:text="@string/menuAuthentication"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:id="@+id/textAuthenticationTitle"
+                android:textAlignment="center"
+                android:textSize="24sp"/>
+
+            <TextView
+                android:text=""
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:id="@+id/labelAuthenticationCompanyName" />
+
+            <TextView
+                android:text=""
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:id="@+id/labelAuthenticationServiceName" />
+
+            <TextView
+                android:text=""
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:id="@+id/labelAuthenticationMessageContent" />
+
+            <TextView
+                android:text="@string/labelEnterPinCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:id="@+id/labelAuthenticationEnterPinCode" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="12"
+                android:layout_marginTop="10dp"
+                android:id="@+id/editTextAuthenticationPinCode"
+                android:text=""
+                android:inputType="textPassword" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="50dp">
+
+                <Button
+                    android:text="@android:string/ok"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/buttonAuthenticationConfirm"
+                    android:layout_weight="0.37" />
+
+                <Button
+                    android:text="@android:string/cancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/buttonAuthenticationCancel"
+                    android:layout_weight="0.37" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

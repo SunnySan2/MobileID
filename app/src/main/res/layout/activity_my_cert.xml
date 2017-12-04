@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_my_cert"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.taisys.sc.mobileid.MyCertActivity"
+    android:background="#FBF1D8"
+    android:orientation="vertical">
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:text="@string/menuMyCertificate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:id="@+id/textMyCertTitle"
+                android:textAlignment="center"
+                android:textSize="24sp"/>
+
+            <TextView
+                android:text="@string/labelMyCertSerialNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:id="@+id/labelMyCertSerialNumber" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:layout_marginTop="5dp"
+                android:id="@+id/editTextMyCertSerialNumber"
+                android:text="" />
+
+            <TextView
+                android:text="@string/labelMyCertCertOwner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:id="@+id/labelMyCertCertOwner" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:layout_marginTop="5dp"
+                android:id="@+id/editTextMyCertCertOwner"
+                android:text="" />
+
+            <TextView
+                android:text="@string/labelMyCertIssueDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:id="@+id/labelMyCertIssueDate" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:layout_marginTop="5dp"
+                android:id="@+id/editTextMyCertIssueDate"
+                android:text="" />
+
+            <TextView
+                android:text="@string/labelMyCertExpiryDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:id="@+id/labelMyCertExpiryDate" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:layout_marginTop="5dp"
+                android:id="@+id/editTextMyCertExpiryDate"
+                android:text="" />
+
+            <TextView
+                android:text="@string/labelMyCertStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:id="@+id/labelMyCertStatus" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:layout_marginTop="5dp"
+                android:id="@+id/editTextMyCertStatus"
+                android:text="" />
+
+            <Button
+                android:text="@android:string/ok"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/buttonMyCertConfirm" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

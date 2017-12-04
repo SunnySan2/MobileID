@@ -32,7 +32,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text"
-        android:text="A123456789"
+        android:text=""
         android:ems="20"
         android:layout_marginTop="15dp"
         android:id="@+id/editTextRegistationIdCardNumber" />
@@ -50,7 +50,7 @@
         android:ems="12"
         android:layout_marginTop="15dp"
         android:id="@+id/editTextRegistrationPinCode"
-        android:text="111111"
+        android:text=""
         android:inputType="textPassword" />
 
     <LinearLayout

@@ -36,8 +36,8 @@ public class RegistrationActivity extends Activity {
         setContentView(R.layout.activity_registration);
 
         myContext = this;
+        initView();
         setOnClickListener();
-        utility.setMySetting(myContext, "iccid", "");   //先把程式裡的 iccid 設定清除
 
         //showWaiting("Read card info, please wait...");
 
@@ -82,6 +82,14 @@ public class RegistrationActivity extends Activity {
     @Override
     public void onBackPressed() {
         this.finish();
+    }
+
+    private void initView() {
+        String idCardNumber = utility.getMySetting(myContext, "idCardNumber");
+        if (idCardNumber!=null && idCardNumber.length()>0){
+            EditText editIdCardNumber = (EditText) findViewById(R.id.editTextRegistationIdCardNumber);
+            editIdCardNumber.setText(idCardNumber);
+        }
     }
 
     private void getCardInfo(){
@@ -130,6 +138,7 @@ public class RegistrationActivity extends Activity {
         //顯示Progress對話視窗
         // showWaiting(getString(R.string.pleaseWait), getString(R.string.msgCheckCardAvailability));
         showWaiting(getString(R.string.pleaseWait), getString(R.string.msgRegistrationInProgress));
+        utility.setMySetting(myContext, "iccid", "");   //先把程式裡的 iccid 設定清除
         mCard.OpenSEService(myContext, "A000000018506373697A672D63617264",
                 new SCSupported() {
 

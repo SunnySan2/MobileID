@@ -155,5 +155,25 @@ public class MainActivity extends Activity {
                 startActivity(i);
             }
         });
+
+        ImageButton b2 = (ImageButton) findViewById(R.id.iconMyCertificate);
+        b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent();
+                i.setClass(MainActivity.this, MyCertActivity.class);
+                startActivity(i);
+            }
+        });
+
+        ImageButton b3 = (ImageButton) findViewById(R.id.iconReport);
+        b3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent();
+                i.setClass(MainActivity.this, ReportActivity.class);
+                startActivity(i);
+            }
+        });
     }
 }

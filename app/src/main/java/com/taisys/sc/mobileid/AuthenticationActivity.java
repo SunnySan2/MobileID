@@ -134,7 +134,7 @@ public class AuthenticationActivity extends Activity {
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                sendAuthenticationResultToServer(false);
             }
         });
     }

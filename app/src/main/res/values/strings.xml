@@ -34,4 +34,10 @@
     <string name="msgUnableToGetIccid">Unable to obtain card information, please regiter your certificate.</string>
     <string name="msgUnableToGetIdCardNumber">Unable to obtain ID card number, please regiter your certificate.</string>
     <string name="msgCreatingSignature">Creating signature in progress.</string>
+    <string name="labelMyCertSerialNumber">Serial number: </string>
+    <string name="labelMyCertCertOwner">Owner name: </string>
+    <string name="labelMyCertIssueDate">Issue date: </string>
+    <string name="labelMyCertExpiryDate">Expiry date: </string>
+    <string name="labelMyCertStatus">Status: </string>
+    <string name="msgDataUpdateInProgress">Data update in progress</string>
 </resources>
