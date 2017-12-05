@@ -45,17 +45,17 @@
         <activity
             android:name=".RegistrationActivity"
             android:screenOrientation="portrait" />
-
-        <activity android:name=".AuthenticationActivity"
+        <activity
+            android:name=".AuthenticationActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".MyCertActivity"
-            android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".ReportActivity"
             android:screenOrientation="portrait" />
-
-        <activity android:name=".ReportActivity"
-            android:screenOrientation="portrait" />
+        <activity android:name=".ChangePinCodeActivity"></activity>
     </application>
 
 </manifest>

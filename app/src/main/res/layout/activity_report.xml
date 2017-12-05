@@ -12,22 +12,13 @@
     android:background="#EEEEEE"
     android:orientation="vertical">
 
-    <TextView
+        <TextView
         android:text="@string/menuReport"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
         android:id="@+id/textAuthenticationTitle"
         android:textAlignment="center"
         android:textSize="24sp"/>
-
-    <ListView
-        android:id="@+id/lvReportList"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:fastScrollEnabled="true"
-        android:layout_marginTop="15dp"
-        />
 
     <Button
         android:text="@android:string/ok"
@@ -36,5 +27,12 @@
         android:id="@+id/buttonReportConfirm"
         />
 
+    <ListView
+        android:id="@+id/lvReportList"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:fastScrollEnabled="true"
+        android:layout_marginTop="15dp"
+        />
 
 </LinearLayout>

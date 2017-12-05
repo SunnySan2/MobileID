@@ -175,5 +175,15 @@ public class MainActivity extends Activity {
                 startActivity(i);
             }
         });
+
+        ImageButton b4 = (ImageButton) findViewById(R.id.iconChangePinCode);
+        b4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent();
+                i.setClass(MainActivity.this, ChangePinCodeActivity.class);
+                startActivity(i);
+            }
+        });
     }
 }

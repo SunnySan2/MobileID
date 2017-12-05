@@ -149,6 +149,7 @@ public class AuthenticationActivity extends Activity {
         if (res != null && res[0].equals(Card.RES_OK)) {
             verifyPinCode();
         } else {
+            disWaiting();
             utility.showMessage(myContext, getString(R.string.msgUnableToGetIccid));
         }
 

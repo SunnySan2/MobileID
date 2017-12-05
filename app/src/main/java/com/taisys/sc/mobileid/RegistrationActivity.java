@@ -125,6 +125,7 @@ public class RegistrationActivity extends Activity {
             //utility.showToast(this, "ICCID= " + iccid);
             verifyPinCode();
         } else {
+            disWaiting();
             utility.showMessage(myContext, getString(R.string.msgCannotReadCardInfo));
         }
 

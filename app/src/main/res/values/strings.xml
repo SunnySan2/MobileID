@@ -19,11 +19,16 @@
     <string name="msgDoesntSupportOti">Unable to communicate with card, please ensure you have inserted the card.</string>
     <string name="msgCannotReadCardInfo">Unable to get card information, please ensure you have inserted the correct card.</string>
     <string name="msgPleaseEnterPinCode">Please enter PIN code.</string>
+    <string name="msgPleaseEnterNewPinCode">Please enter new PIN code.</string>
+    <string name="msgNewPinCodeIsTooShort">The minimum length of PIN code is six.</string>
+    <string name="msgPleaseEnterNewPinCodeAgain">Please enter new PIN code again.</string>
+    <string name="msgNewPinCodesAreNotTheSame">New PIN codes are not the same.</string>
+    <string name="msgChangePinCodeInProgress">Change PIN code in progress.</string>
     <string name="msgVerifyPinCode">Verify PIN code.</string>
     <string name="msgPinCodeIsIncorrect">The PIN code is incorrect, please enter valid PIN code.</string>
     <string name="msgPleaseEnterIdCardNumber">Please enter your ID card number</string>
     <string name="msgCannotFindFcmToken">Unable to find push notification token, please re-install the APP and try again.</string>
-    <string name="msgSendRegistrationRequest">Genarate digital signature and process registration data.</string>
+    <string name="msgSendRegistrationRequest">Generate digital signature and process registration data.</string>
     <string name="msgFailToCommunicateWithServer">Fail to communicate with server.</string>
     <string name="msgUnableToParseServerResponseData">Unable to parse response data sent from server.</string>
     <string name="msgProcessFailed">Process failed.</string>
@@ -40,4 +45,8 @@
     <string name="labelMyCertExpiryDate">Expiry date: </string>
     <string name="labelMyCertStatus">Status: </string>
     <string name="msgDataUpdateInProgress">Data update in progress</string>
+    <string name="title_activity_scrolling">ScrollingActivity</string>
+    <string name="labelEnterCurrentPinCode">Please enter current PIN code (*) </string>
+    <string name="labelEnterNewPinCode">Please enter new PIN code, 6~12 characters (*) </string>
+    <string name="labelEnterNewPinCodeAgain">Please re-enter new PIN code (*) </string>
 </resources>
