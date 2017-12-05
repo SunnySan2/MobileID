@@ -34,6 +34,7 @@
         android:inputType="text"
         android:text=""
         android:ems="20"
+        android:maxLength="20"
         android:layout_marginTop="15dp"
         android:id="@+id/editTextRegistationIdCardNumber" />
 
@@ -48,6 +49,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="12"
+        android:maxLength="12"
         android:layout_marginTop="15dp"
         android:id="@+id/editTextRegistrationPinCode"
         android:text=""

@@ -60,6 +60,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="12"
+                android:maxLength="12"
                 android:layout_marginTop="10dp"
                 android:id="@+id/editTextAuthenticationPinCode"
                 android:text=""
