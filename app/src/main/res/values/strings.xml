@@ -45,7 +45,6 @@
     <string name="labelMyCertExpiryDate">Expiry date: </string>
     <string name="labelMyCertStatus">Status: </string>
     <string name="msgDataUpdateInProgress">Data update in progress</string>
-    <string name="title_activity_scrolling">ScrollingActivity</string>
     <string name="labelEnterCurrentPinCode">Please enter current PIN code (*) </string>
     <string name="labelEnterNewPinCode">Please enter new PIN code, 6~12 characters (*) </string>
     <string name="labelEnterNewPinCodeAgain">Please re-enter new PIN code (*) </string>

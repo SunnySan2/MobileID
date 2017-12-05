@@ -33,7 +33,7 @@ dependencies {
     compile 'com.synnapps:carouselview:0.1.4'
     compile 'com.squareup.okhttp3:okhttp:3.9.1'
     compile files('libs/com.taisys.oti.card.v1.1.5.jar')
-    compile files('libs/android-support-v4.jar')
+    compile 'com.android.support:support-v4'
 }
 
 apply plugin: 'com.android.application'
