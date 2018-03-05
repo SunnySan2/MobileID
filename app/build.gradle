@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "com.taisys.sc.mobileid"
         minSdkVersion 14
@@ -32,7 +31,7 @@ dependencies {
     compile 'com.google.firebase:firebase-messaging:11.6.0'
     compile 'com.synnapps:carouselview:0.1.4'
     compile 'com.squareup.okhttp3:okhttp:3.9.1'
-    compile files('libs/com.taisys.oti.card.v1.1.5.jar')
+    compile files('libs/com.taisys.oti.card.v1.1.8.jar')
     compile 'com.android.support:support-v4'
 }
 
