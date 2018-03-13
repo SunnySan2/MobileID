@@ -38,6 +38,7 @@ public class AuthenticationActivity extends Activity {
     private String sCompanyName = "";
     private String sMessageContent = "";
     private String sTransactionID = "";
+    private String sRsaSignature = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -169,18 +170,38 @@ public class AuthenticationActivity extends Activity {
         int pinId = 0x1;
         pinCode = utility.byte2Hex(pinCode.getBytes());
         String res = mCard.VerifyPIN(pinId, pinCode);
+        /*
         if (mCard!=null){
             mCard.CloseSEService();
         }
+        */
         if (res != null && res.equals(Card.RES_OK)) {
             Log.d("MobileId", "PIN verification passed");
-            sendAuthenticationResultToServer(true);
+            generateRSASignature();
         } else {
             disWaiting();
             Log.d("MobileId", "PIN code compared failed, user enter PIN= " + pinCode + ", response= " + res);
             //utility.showMessage(myContext, pinCode);
             utility.showMessage(myContext, getString(R.string.msgPinCodeIsIncorrect));
         }
+    }
+
+    //產生 RSA 簽章
+    private void generateRSASignature(){
+        String res[] = mCard.RSAPriKeyCalc(sTransactionID, false, 0x0301);
+        if (mCard!=null){
+            mCard.CloseSEService();
+        }
+        if (res != null && res[0].equals(Card.RES_OK)) {
+            Log.d("MobileId", "RSA signature successfully, signature hash=" + res[1]);
+            sRsaSignature = res[1];
+            sendAuthenticationResultToServer(true);
+        }else{
+            Log.d("MobileId", "RSA signature failed！ error code=" + res[0]);
+            disWaiting();
+            utility.showMessage(myContext, getString(R.string.msgPinCodeIsIncorrect));
+        }
+
     }
 
     private void sendAuthenticationResultToServer(boolean bPass){
@@ -211,6 +232,7 @@ public class AuthenticationActivity extends Activity {
                     .add("TransactionID", sTransactionID)
                     .add("TransactionResult", sResult)
                     .add("ICCID", iccid)
+                    .add("Signature", sRsaSignature)
                     .build();
 
             // 建立請求物件，設定網址

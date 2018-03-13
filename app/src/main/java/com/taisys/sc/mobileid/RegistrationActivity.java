@@ -30,6 +30,8 @@ public class RegistrationActivity extends Activity {
     private ProgressDialog pg = null;
     private Context myContext = null;
 
+    private String myPublicKey = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -179,16 +181,56 @@ public class RegistrationActivity extends Activity {
         int pinId = 0x1;
         pinCode = utility.byte2Hex(pinCode.getBytes());
         String res = mCard.VerifyPIN(pinId, pinCode);
+        /*
         if (mCard!=null){
             mCard.CloseSEService();
         }
+        */
         if (res != null && res.equals(Card.RES_OK)) {
             Log.d("MobileId", "PIN verification passed");
-            sendRegistrationRequestToServer();
+            generateRsaKeyPair();
         } else {
             disWaiting();
             Log.d("MobileId", "PIN code compared failed, user enter PIN= " + pinCode);
             utility.showMessage(myContext, getString(R.string.msgPinCodeIsIncorrect));
+        }
+    }
+
+    private void generateRsaKeyPair(){
+        String res[] = null;
+        String s = "";
+        int i = 0;
+        int j = 0;
+
+        long begintime = 0;
+
+        //產生 RSA key pair
+        begintime = System.currentTimeMillis();
+        String resString = mCard.GenRSAKeyPair(Card.RSA_1024_BITS, 0x0201, 0x0301);
+        begintime = System.currentTimeMillis() - begintime;
+        if (resString != null && resString.equals(Card.RES_OK)) {
+            Log.d("MobileIdRegistration", "time:" + begintime + "ms, " + "Gen key pair OK!");
+        } else {
+            Log.e("MobileIdRegistration", "time:" + begintime + "ms, " + "Gen key pair Failed!");
+            utility.showMessage(myContext, getString(R.string.msgUnableToGenerateRsaKeyPair) + ", error code=" + resString);
+            disWaiting();
+            return;
+        }
+
+        //讀出 public key
+        res = mCard.ReadFile(0x0201, 0x0, 264);
+        if (mCard!=null){
+            mCard.CloseSEService();
+        }
+        disWaiting();
+        if (res != null && res[0].equals(Card.RES_OK)) {
+            myPublicKey = res[1];
+            Log.d("MobileIdRegistration", "public key=" + myPublicKey);
+            sendRegistrationRequestToServer();
+        } else {
+            utility.showMessage(myContext, getString(R.string.msgFailToReadPublicKey) + "error code=" + res[0]);
+            Log.e("MobileIdRegistration", "no public key:" + res[0]);
+            return;
         }
     }
 
@@ -227,6 +269,7 @@ public class RegistrationActivity extends Activity {
                     .add("idCardNumber", idCardNumber)
                     .add("iccid", iccid)
                     .add("fcmToken", fcmToken)
+                    .add("publicKey", myPublicKey)
                     .build();
 
             // 建立請求物件，設定網址
