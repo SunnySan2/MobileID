@@ -204,21 +204,56 @@ public class RegistrationActivity extends Activity {
 
         long begintime = 0;
 
-        //產生 RSA key pair
-        begintime = System.currentTimeMillis();
-        String resString = mCard.GenRSAKeyPair(Card.RSA_1024_BITS, 0x0201, 0x0301);
-        begintime = System.currentTimeMillis() - begintime;
-        if (resString != null && resString.equals(Card.RES_OK)) {
-            Log.d("MobileIdRegistration", "time:" + begintime + "ms, " + "Gen key pair OK!");
-        } else {
-            Log.e("MobileIdRegistration", "time:" + begintime + "ms, " + "Gen key pair Failed!");
-            utility.showMessage(myContext, getString(R.string.msgUnableToGenerateRsaKeyPair) + ", error code=" + resString);
-            disWaiting();
-            return;
-        }
+        String resString = "";
 
         //讀出 public key
         res = mCard.ReadFile(0x0201, 0x0, 264);
+        if (res[0]!=null && res[0].equals("-15")) {    //key不存在，建立key
+            //先執行CreateFile
+            resString = mCard.CreateFile(0x0201, (byte)0x02, 0x0, (byte)0x0, (byte)0x0, (byte)0x0);
+            if (resString == null || !resString.equals(Card.RES_OK)) {
+                disWaiting();
+                if (mCard!=null){
+                    mCard.CloseSEService();
+                }
+                utility.showMessage(myContext, getString(R.string.msgUnableToCreatePublicKeyFile) + "error=" + resString);
+                Log.e("MobileIdRegistration", "Sunny: Create public key file fail!");
+                return;
+            }
+            Log.i("MobileIdRegistration", "Sunny: Create public key file OK!");
+            resString = mCard.CreateFile(0x0301, (byte)0x03, 0x0, (byte)0x0, (byte)0x0, (byte)0x0);
+            if (resString == null || !resString.equals(Card.RES_OK)) {
+                disWaiting();
+                if (mCard!=null){
+                    mCard.CloseSEService();
+                }
+                utility.showMessage(myContext, getString(R.string.msgUnableToCreatePrivateKeyFile) + "error code=" + res[0]);
+                Log.e("MobileIdRegistration", "Sunny: Create public key file fail!");
+                return;
+            }
+            Log.i("MobileIdRegistration", "Sunny: Create private key file OK!");
+
+
+            //產生 RSA key pair
+            begintime = System.currentTimeMillis();
+            resString = mCard.GenRSAKeyPair(Card.RSA_1024_BITS, 0x0201, 0x0301);
+            begintime = System.currentTimeMillis() - begintime;
+            if (resString != null && resString.equals(Card.RES_OK)) {
+                Log.d("MobileIdRegistration", "time:" + begintime + "ms, " + "Gen key pair OK!");
+            } else {
+                if (mCard!=null){
+                    mCard.CloseSEService();
+                }
+                Log.e("MobileIdRegistration", "time:" + begintime + "ms, " + "Gen key pair Failed!");
+                utility.showMessage(myContext, getString(R.string.msgUnableToGenerateRsaKeyPair) + ", error code=" + resString);
+                disWaiting();
+                return;
+            }
+            //讀出 public key
+            res = mCard.ReadFile(0x0201, 0x0, 264);
+
+        }
+
         if (mCard!=null){
             mCard.CloseSEService();
         }

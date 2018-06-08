@@ -22,17 +22,17 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    testCompile 'junit:junit:4.12'
-    compile 'com.google.firebase:firebase-core:11.6.0'
-    compile 'com.google.firebase:firebase-messaging:11.6.0'
-    compile 'com.synnapps:carouselview:0.1.4'
-    compile 'com.squareup.okhttp3:okhttp:3.9.1'
-    compile files('libs/com.taisys.oti.card.v1.1.8.jar')
-    compile 'com.android.support:support-v4'
+    testImplementation 'junit:junit:4.12'
+    implementation 'com.google.firebase:firebase-core:11.6.0'
+    implementation 'com.google.firebase:firebase-messaging:11.6.0'
+    implementation 'com.synnapps:carouselview:0.1.4'
+    implementation 'com.squareup.okhttp3:okhttp:3.9.1'
+    implementation files('libs/com.taisys.oti.card.v1.1.8.jar')
+    implementation 'com.android.support:support-v4'
 }
 
 apply plugin: 'com.android.application'

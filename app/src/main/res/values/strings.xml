@@ -48,6 +48,8 @@
     <string name="labelEnterCurrentPinCode">Please enter current PIN code (*) </string>
     <string name="labelEnterNewPinCode">Please enter new PIN code, 6~12 characters (*) </string>
     <string name="labelEnterNewPinCodeAgain">Please re-enter new PIN code (*) </string>
+    <string name="msgUnableToCreatePublicKeyFile">Unable to create public key file</string>
+    <string name="msgUnableToCreatePrivateKeyFile">Unable to create private key file</string>
     <string name="msgUnableToGenerateRsaKeyPair">Unable to generate RSA key pair</string>
     <string name="msgFailToReadPublicKey">Failed to read public key</string>
     <string name="msgUnableToGenerateRsaSignature">Unable to generate RSA signature</string>

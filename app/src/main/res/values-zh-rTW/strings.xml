@@ -49,6 +49,8 @@
     <string name="labelEnterCurrentPinCode">請輸入目前的 PIN 碼 (*) </string>
     <string name="labelEnterNewPinCode">請輸入新的 PIN 碼，6~12字元 (*) </string>
     <string name="labelEnterNewPinCodeAgain">請再次輸入新的 PIN 碼 (*) </string>
+    <string name="msgUnableToCreatePublicKeyFile">無法產生 RSA 公鑰檔</string>
+    <string name="msgUnableToCreatePrivateKeyFile">無法產生 RSA 私鑰檔</string>
     <string name="msgUnableToGenerateRsaKeyPair">無法產生 RSA 秘鑰對</string>
     <string name="msgFailToReadPublicKey">無法讀取公鑰</string>
     <string name="msgUnableToGenerateRsaSignature">無法產生 RSA 簽章</string>
